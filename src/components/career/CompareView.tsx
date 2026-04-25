@@ -31,9 +31,9 @@ export default function CompareView({ dataA, dataB }: Props) {
   // Collect all unique skills across both roles
   const allSkillsA = dataA.positions.flatMap((p) => p.skills.map((s) => s.name));
   const allSkillsB = dataB.positions.flatMap((p) => p.skills.map((s) => s.name));
-  const onlyInA   = [...new Set(allSkillsA.filter((s) => !allSkillsB.includes(s)))].slice(0, 6);
-  const onlyInB   = [...new Set(allSkillsB.filter((s) => !allSkillsA.includes(s)))].slice(0, 6);
-  const inBoth    = [...new Set(allSkillsA.filter((s) =>  allSkillsB.includes(s)))].slice(0, 8);
+  const onlyInA = Array.from(new Set(allSkillsA.filter((s) => !allSkillsB.includes(s)))).slice(0, 6);
+  const onlyInB = Array.from(new Set(allSkillsB.filter((s) => !allSkillsA.includes(s)))).slice(0, 6);
+  const inBoth  = Array.from(new Set(allSkillsA.filter((s) =>  allSkillsB.includes(s)))).slice(0, 8);
 
   const COLORS = { A: "#6366f1", B: "#0d9488" };
 
